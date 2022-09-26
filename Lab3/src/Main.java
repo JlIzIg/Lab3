@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class Main {
     /**
      * Дан символ C. Вывести два символа, первый из которых предшествует символу C в кодовой таблице,
@@ -5,7 +6,7 @@ public class Main {
      **/
     private static void task1() {
         char C = '8';
-        System.out.printf("Previous: %c, following: %c", ( C - 1),  ( C + 1));
+        System.out.printf("Previous: %c, following: %c", C - 1, C + 1);
     }
 
     /**
@@ -17,11 +18,11 @@ public class Main {
         int N = 6;
         String str1 = "Hello! I am cat.";
         int length = str1.length();
-        if (length > N) str1 = str1.substring(length-N);
+        if (length > N) str1 = str1.substring(length - N);
         else {
-            String [] sub = new String [length-N];
-             Arrays.fill(sub, '.');
-             str1 = sub+str1;
+            String[] sub = new String[length - N];
+            Arrays.fill(sub, '.');
+            str1 = sub + str1;
         }
         System.out.printf("New string: %s", str1);
     }
@@ -106,8 +107,10 @@ public class Main {
      * в которой расположена первая ошибочная скобка, или, если закрывающих скобок не хватает, число −1.
      **/
     public static void task6() {
-        String str = "Rain { movie}  calls  (Rain Movie) I like it [so]";
+         String str = "Rain { movie}  calls  (Rain) Movie I like it [so]";
         int n1 = 0;
+        int n2 = 0;
+        int n3 = 0;
         int error_index = 0;
         for (var c: str.toCharArray()) {
             if (c == '{') {
@@ -117,26 +120,26 @@ public class Main {
                 n1++;
             }
             if (c == '[') {
-                n1--;
+                n2--;
             }
             if (c == ']') {
-                n1++;
+                n2++;
             }
             if (c == '(') {
-                n1--;
+                n3--;
             }
             if (c == ')') {
-                n1++;
+                n3++;
             }
-            if ((n1 > 0 ) && error_index == 0) {
+            if ((n1 > 0 || n2 > 0 || n3 > 0) ) {
                 error_index = str.indexOf(c);
                 System.out.println("First error position is " + error_index);
             }
         }
-        if (n1 == 0) {
+        if (n1 == 0 && n2 == 0 && n3 == 0) {
             System.out.println("0");
         }
-        if (n1 < 0 ) {
+        if (n1 < 0 || n2 < 0 || n3 < 0) {
             System.out.println("-1");
         }
     }
