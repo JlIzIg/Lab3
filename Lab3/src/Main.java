@@ -109,39 +109,36 @@ public class Main {
      **/
     public static void task6() {
         String str = "Rain { movie}  calls  (Rain Movie) I like it [so]";
-        char[] str_tmp = str.toCharArray();
         int n1 = 0;
-        int n2 = 0;
-        int n3 = 0;
         int error_index = 0;
-        for (int i = 0; i < str.length(); i++) {
-            if (str_tmp[i] == '{') {
+        for (var c: str.toCharArray()) {
+            if (c == '{') {
                 n1--;
             }
-            if (str_tmp[i] == '}') {
+            if (c == '}') {
                 n1++;
             }
-            if (str_tmp[i] == '[') {
-                n2--;
+            if (c == '[') {
+                n1--;
             }
-            if (str_tmp[i] == ']') {
-                n2++;
+            if (c == ']') {
+                n1++;
             }
-            if (str_tmp[i] == '(') {
-                n3--;
+            if (c == '(') {
+                n1--;
             }
-            if (str_tmp[i] == ')') {
-                n3++;
+            if (c == ')') {
+                n1++;
             }
-            if ((n1 > 0 || n2 > 0 || n3 > 0) && error_index == 0) {
-                error_index = i;
+            if ((n1 > 0 ) && error_index == 0) {
+                error_index = str.indexOf(c);
                 System.out.println("First error position is " + error_index);
             }
         }
-        if (n1 == 0 && n2 == 0 && n3 == 0) {
+        if (n1 == 0) {
             System.out.println("0");
         }
-        if (n1 < 0 || n2 < 0 || n3 < 0) {
+        if (n1 < 0 ) {
             System.out.println("-1");
         }
     }
