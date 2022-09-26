@@ -112,7 +112,7 @@ public class Main {
         int n2 = 0;
         int n3 = 0;
         int error_index = 0;
-        for (var c: str.toCharArray()) {
+        for (char c: str.toCharArray()) {
             if (c == '{') {
                 n1--;
             }
