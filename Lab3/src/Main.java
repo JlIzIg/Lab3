@@ -5,7 +5,7 @@ public class Main {
      **/
     private static void task1() {
         char C = '8';
-        System.out.printf("Previous: %c, following: %c", (char) ((int) C - 1), (char) ((int) C + 1));
+        System.out.printf("Previous: %c, following: %c", ( C - 1),  ( C + 1));
     }
 
     /**
