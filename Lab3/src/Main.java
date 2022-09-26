@@ -16,15 +16,13 @@ public class Main {
     private static void task2() {
         int N = 6;
         String str1 = "Hello! I am cat.";
-        do {
-            if (str1.length() > N) {
-                str1 = str1.substring(1);
-            } else if (str1.length() < N) {
-
-                str1 = '.' + str1;
-            }
+        int length = str1.length();
+        if (length > N) str1 = str1.substring(length-N);
+        else {
+            String [] sub = new String [length-N];
+             Arrays.fill(sub, '.');
+             str1 = sub+str1;
         }
-        while (str1.length() != N);
         System.out.printf("New string: %s", str1);
     }
 
